@@ -11800,6 +11800,12 @@ public final class Settings {
         }
 
         /**
+         * boolean value. toggles swipe up hint in gestural nav mode
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_HINT = "navigation_bar_hint";
+
+        /**
          * Show lyric in status bar when playing music
          * <ul>
          *    <li> 0 = disabled </li>
