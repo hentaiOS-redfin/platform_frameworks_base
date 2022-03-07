@@ -745,6 +745,18 @@ public class Instrumentation {
         }
 
         /**
+         * This overload is used for notifying the {@link android.window.TaskFragmentOrganizer}
+         * implementation internally about started activities.
+         *
+         * @see #onStartActivity(Intent)
+         * @hide
+         */
+        public ActivityResult onStartActivity(@NonNull Context who, @NonNull Intent intent,
+                @NonNull Bundle options) {
+            return onStartActivity(intent);
+        }
+
+        /**
          * Used for intercepting any started activity.
          *
          * <p> A non-null return value here will be considered a hit for this monitor.
@@ -1766,7 +1778,10 @@ public class Instrumentation {
                     final ActivityMonitor am = mActivityMonitors.get(i);
                     ActivityResult result = null;
                     if (am.ignoreMatchingSpecificIntents()) {
-                        result = am.onStartActivity(intent);
+                        if (options == null) {
+                            options = ActivityOptions.makeBasic().toBundle();
+                        }
+                        result = am.onStartActivity(who, intent, options);
                     }
                     if (result != null) {
                         am.mHits++;
@@ -1834,7 +1849,10 @@ public class Instrumentation {
                     final ActivityMonitor am = mActivityMonitors.get(i);
                     ActivityResult result = null;
                     if (am.ignoreMatchingSpecificIntents()) {
-                        result = am.onStartActivity(intents[0]);
+                        if (options == null) {
+                            options = ActivityOptions.makeBasic().toBundle();
+                        }
+                        result = am.onStartActivity(who, intents[0], options);
                     }
                     if (result != null) {
                         am.mHits++;
@@ -1905,7 +1923,10 @@ public class Instrumentation {
                     final ActivityMonitor am = mActivityMonitors.get(i);
                     ActivityResult result = null;
                     if (am.ignoreMatchingSpecificIntents()) {
-                        result = am.onStartActivity(intent);
+                        if (options == null) {
+                            options = ActivityOptions.makeBasic().toBundle();
+                        }
+                        result = am.onStartActivity(who, intent, options);
                     }
                     if (result != null) {
                         am.mHits++;
@@ -1972,7 +1993,10 @@ public class Instrumentation {
                     final ActivityMonitor am = mActivityMonitors.get(i);
                     ActivityResult result = null;
                     if (am.ignoreMatchingSpecificIntents()) {
-                        result = am.onStartActivity(intent);
+                        if (options == null) {
+                            options = ActivityOptions.makeBasic().toBundle();
+                        }
+                        result = am.onStartActivity(who, intent, options);
                     }
                     if (result != null) {
                         am.mHits++;
@@ -2018,7 +2042,10 @@ public class Instrumentation {
                     final ActivityMonitor am = mActivityMonitors.get(i);
                     ActivityResult result = null;
                     if (am.ignoreMatchingSpecificIntents()) {
-                        result = am.onStartActivity(intent);
+                        if (options == null) {
+                            options = ActivityOptions.makeBasic().toBundle();
+                        }
+                        result = am.onStartActivity(who, intent, options);
                     }
                     if (result != null) {
                         am.mHits++;
@@ -2065,7 +2092,10 @@ public class Instrumentation {
                     final ActivityMonitor am = mActivityMonitors.get(i);
                     ActivityResult result = null;
                     if (am.ignoreMatchingSpecificIntents()) {
-                        result = am.onStartActivity(intent);
+                        if (options == null) {
+                            options = ActivityOptions.makeBasic().toBundle();
+                        }
+                        result = am.onStartActivity(who, intent, options);
                     }
                     if (result != null) {
                         am.mHits++;
