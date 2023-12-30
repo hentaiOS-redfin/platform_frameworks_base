@@ -74,6 +74,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.os.Trace;
 import android.os.VibrationEffect;
+import static android.view.HapticFeedbackConstants.CLOCK_TICK;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.text.InputFilter;
@@ -2506,6 +2507,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
                             userLevel);
                 }
             }
+            seekBar.performHapticFeedback(CLOCK_TICK);
         }
 
         @Override
